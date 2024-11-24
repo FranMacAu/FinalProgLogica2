@@ -62,14 +62,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsEmployee.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="clsProduct.cs" />
+    <Compile Include="clsSalesDetail.cs" />
+    <Compile Include="clsSalesHeader.cs" />
+    <Compile Include="frmHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteCumpleaños.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteCumpleaños.Designer.cs">
+      <DependentUpon>frmReporteCumpleaños.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportePorRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportePorRol.Designer.cs">
+      <DependentUpon>frmReportePorRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteCumpleaños.resx">
+      <DependentUpon>frmReporteCumpleaños.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportePorRol.resx">
+      <DependentUpon>frmReportePorRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
