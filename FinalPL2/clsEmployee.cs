@@ -216,5 +216,73 @@ namespace FinalPL2
             return Employees;
         }
 
+        public void BuscarPorNationalIDNumber(int nationalidnumber, TextBox jobtitle, TextBox maritalstatus, TextBox vacationhours, Button btnmodificar)
+        {
+            string datoleido = "";
+            StreamReader AD = new StreamReader(FileName);
+
+            datoleido = AD.ReadLine();
+            datoleido = AD.ReadLine();
+            while (datoleido != null)
+            {
+                string[] registro = datoleido.Split(';');
+                if ((Convert.ToInt32(registro[1])) == nationalidnumber)
+                {
+                    jobtitle.Text = registro[5];
+                    maritalstatus.Text = registro[7];
+                    vacationhours.Text = registro[11];
+
+                    jobtitle.ReadOnly = false;
+                    maritalstatus.ReadOnly = false;
+                    vacationhours.ReadOnly = false;
+                    btnmodificar.Enabled = true;
+                }
+                datoleido = AD.ReadLine();
+            }
+            AD.Close();
+            AD.Dispose();
+        }
+
+        public void ModificarPorNationalIDNumber(int nationalidnumber, TextBox jobtitle, TextBox maritalstatus, TextBox vacationhours)
+        {
+            string datoleido = "";
+            string tempFile = "TempFile.csv";
+            bool regModificado = false;
+            StreamReader AD = new StreamReader(FileName);
+            StreamWriter RD = new StreamWriter(tempFile, false);
+
+            datoleido = AD.ReadLine();
+            datoleido = AD.ReadLine();
+            while (datoleido != null)
+            {
+                string[] registro = datoleido.Split(';');
+                if ((Convert.ToInt32(registro[1])) == nationalidnumber)
+                {
+
+                    registro[5] = jobtitle.Text;
+                    registro[7] = maritalstatus.Text;
+                    registro[11] = vacationhours.Text;
+                    registro[15] = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+
+                    datoleido = string.Join(";", registro);
+                    //RD.WriteLine(datoleido);
+                    regModificado = true; 
+                    
+                }
+                RD.WriteLine(datoleido);
+                datoleido = AD.ReadLine();
+            }
+            AD.Close();
+            AD.Dispose();
+            File.Delete(FileName);
+            RD.Close();
+            RD.Dispose();
+            File.Move(tempFile, FileName);
+
+            if (regModificado)
+            {
+                MessageBox.Show("Datos actualizados");
+            } else { MessageBox.Show("No se detectaron cambios"); }
+        }
     }
 }

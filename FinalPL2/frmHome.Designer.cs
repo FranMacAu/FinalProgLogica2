@@ -99,6 +99,7 @@
             this.modificarDatosDeEmpleadoToolStripMenuItem.Name = "modificarDatosDeEmpleadoToolStripMenuItem";
             this.modificarDatosDeEmpleadoToolStripMenuItem.Size = new System.Drawing.Size(297, 26);
             this.modificarDatosDeEmpleadoToolStripMenuItem.Text = "Modificar datos de empleado";
+            this.modificarDatosDeEmpleadoToolStripMenuItem.Click += new System.EventHandler(this.modificarDatosDeEmpleadoToolStripMenuItem_Click);
             // 
             // frmHome
             // 

@@ -28,5 +28,11 @@ namespace FinalPL2
             frmReporteCumpleaños V = new frmReporteCumpleaños();
             V.ShowDialog();
         }
+
+        private void modificarDatosDeEmpleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmModificarEmpleado V = new frmModificarEmpleado();
+            V.ShowDialog();
+        }
     }
 }
