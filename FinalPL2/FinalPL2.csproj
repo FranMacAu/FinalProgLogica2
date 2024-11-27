@@ -77,6 +77,12 @@
     <Compile Include="frmModificarEmpleado.Designer.cs">
       <DependentUpon>frmModificarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteBusquedaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteBusquedaProductos.Designer.cs">
+      <DependentUpon>frmReporteBusquedaProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteCumpleaños.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmModificarEmpleado.resx">
       <DependentUpon>frmModificarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteBusquedaProductos.resx">
+      <DependentUpon>frmReporteBusquedaProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteCumpleaños.resx">
       <DependentUpon>frmReporteCumpleaños.cs</DependentUpon>

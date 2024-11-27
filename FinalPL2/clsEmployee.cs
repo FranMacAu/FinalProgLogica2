@@ -65,7 +65,7 @@ namespace FinalPL2
         {
             
             int i = 0;
-            while (i < 11)
+            while (i < 12)
             {
                 CB.Items.Add(meses[i]);
                 i++;
@@ -219,6 +219,7 @@ namespace FinalPL2
         public void BuscarPorNationalIDNumber(int nationalidnumber, TextBox jobtitle, TextBox maritalstatus, TextBox vacationhours, Button btnmodificar)
         {
             string datoleido = "";
+            bool coincidencia = false;
             StreamReader AD = new StreamReader(FileName);
 
             datoleido = AD.ReadLine();
@@ -236,11 +237,18 @@ namespace FinalPL2
                     maritalstatus.ReadOnly = false;
                     vacationhours.ReadOnly = false;
                     btnmodificar.Enabled = true;
+
+                    coincidencia = true;
                 }
                 datoleido = AD.ReadLine();
             }
             AD.Close();
             AD.Dispose();
+
+            if (coincidencia == false)
+            {
+                MessageBox.Show("No se encontraron coincidencias");
+            }
         }
 
         public void ModificarPorNationalIDNumber(int nationalidnumber, TextBox jobtitle, TextBox maritalstatus, TextBox vacationhours)

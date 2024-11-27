@@ -49,7 +49,7 @@
             this.cmbRoles.FormattingEnabled = true;
             this.cmbRoles.Location = new System.Drawing.Point(104, 41);
             this.cmbRoles.Name = "cmbRoles";
-            this.cmbRoles.Size = new System.Drawing.Size(153, 24);
+            this.cmbRoles.Size = new System.Drawing.Size(268, 24);
             this.cmbRoles.TabIndex = 1;
             this.cmbRoles.SelectedIndexChanged += new System.EventHandler(this.cmbRoles_SelectedIndexChanged);
             // 
@@ -80,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 224);
+            this.ClientSize = new System.Drawing.Size(513, 221);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmReportePorRol";
             this.Text = "Reporte por Rol";

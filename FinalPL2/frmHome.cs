@@ -34,5 +34,19 @@ namespace FinalPL2
             frmModificarEmpleado V = new frmModificarEmpleado();
             V.ShowDialog();
         }
+
+        private void reporteDeTodosLosProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsProduct objProduct = new clsProduct();
+            objProduct.ReporteProductosOrdenados();
+        }
+
+        private void unoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteBusquedaProductos V = new frmReporteBusquedaProductos();
+            V.ShowDialog();
+        }
+
+        
     }
 }

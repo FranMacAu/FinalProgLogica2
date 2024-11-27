@@ -46,7 +46,7 @@
             // 
             this.cmdBuscar.Location = new System.Drawing.Point(526, 69);
             this.cmdBuscar.Name = "cmdBuscar";
-            this.cmdBuscar.Size = new System.Drawing.Size(87, 28);
+            this.cmdBuscar.Size = new System.Drawing.Size(98, 25);
             this.cmdBuscar.TabIndex = 0;
             this.cmdBuscar.Text = "Buscar";
             this.cmdBuscar.UseVisualStyleBackColor = true;
@@ -65,7 +65,7 @@
             // 
             this.txtNationalIDNumber.Location = new System.Drawing.Point(254, 72);
             this.txtNationalIDNumber.Name = "txtNationalIDNumber";
-            this.txtNationalIDNumber.Size = new System.Drawing.Size(199, 22);
+            this.txtNationalIDNumber.Size = new System.Drawing.Size(237, 22);
             this.txtNationalIDNumber.TabIndex = 2;
             // 
             // groupBox1
@@ -89,7 +89,7 @@
             this.cmdModificar.Enabled = false;
             this.cmdModificar.Location = new System.Drawing.Point(432, 93);
             this.cmdModificar.Name = "cmdModificar";
-            this.cmdModificar.Size = new System.Drawing.Size(106, 50);
+            this.cmdModificar.Size = new System.Drawing.Size(106, 69);
             this.cmdModificar.TabIndex = 6;
             this.cmdModificar.Text = "Guardar cambios";
             this.cmdModificar.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             // 
             // txtVacationHours
             // 
-            this.txtVacationHours.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtVacationHours.BackColor = System.Drawing.Color.Linen;
             this.txtVacationHours.Location = new System.Drawing.Point(204, 169);
             this.txtVacationHours.Name = "txtVacationHours";
             this.txtVacationHours.ReadOnly = true;
@@ -106,7 +106,7 @@
             // 
             // txtMaritalStatus
             // 
-            this.txtMaritalStatus.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtMaritalStatus.BackColor = System.Drawing.Color.Linen;
             this.txtMaritalStatus.Location = new System.Drawing.Point(204, 107);
             this.txtMaritalStatus.Name = "txtMaritalStatus";
             this.txtMaritalStatus.ReadOnly = true;
@@ -115,7 +115,7 @@
             // 
             // txtJobTitle
             // 
-            this.txtJobTitle.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtJobTitle.BackColor = System.Drawing.Color.Linen;
             this.txtJobTitle.Location = new System.Drawing.Point(204, 56);
             this.txtJobTitle.Name = "txtJobTitle";
             this.txtJobTitle.ReadOnly = true;
