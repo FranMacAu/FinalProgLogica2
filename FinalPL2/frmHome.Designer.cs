@@ -41,6 +41,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.reporteDeVentasPorPeriodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeVentasPorFacturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteDeProductosMásVendidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +56,7 @@
             this.ventasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -119,8 +122,12 @@
             // 
             // ventasToolStripMenuItem
             // 
+            this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteDeVentasPorPeriodoToolStripMenuItem,
+            this.reporteDeVentasPorFacturaToolStripMenuItem,
+            this.reporteDeProductosMásVendidosToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
             // label1
@@ -158,6 +165,27 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Herramienta de reportes";
             // 
+            // reporteDeVentasPorPeriodoToolStripMenuItem
+            // 
+            this.reporteDeVentasPorPeriodoToolStripMenuItem.Name = "reporteDeVentasPorPeriodoToolStripMenuItem";
+            this.reporteDeVentasPorPeriodoToolStripMenuItem.Size = new System.Drawing.Size(296, 26);
+            this.reporteDeVentasPorPeriodoToolStripMenuItem.Text = "Reporte de ventas por periodo";
+            this.reporteDeVentasPorPeriodoToolStripMenuItem.Click += new System.EventHandler(this.reporteDeVentasPorPeriodoToolStripMenuItem_Click);
+            // 
+            // reporteDeVentasPorFacturaToolStripMenuItem
+            // 
+            this.reporteDeVentasPorFacturaToolStripMenuItem.Name = "reporteDeVentasPorFacturaToolStripMenuItem";
+            this.reporteDeVentasPorFacturaToolStripMenuItem.Size = new System.Drawing.Size(296, 26);
+            this.reporteDeVentasPorFacturaToolStripMenuItem.Text = "Reporte de ventas por factura";
+            this.reporteDeVentasPorFacturaToolStripMenuItem.Click += new System.EventHandler(this.reporteDeVentasPorFacturaToolStripMenuItem_Click);
+            // 
+            // reporteDeProductosMásVendidosToolStripMenuItem
+            // 
+            this.reporteDeProductosMásVendidosToolStripMenuItem.Name = "reporteDeProductosMásVendidosToolStripMenuItem";
+            this.reporteDeProductosMásVendidosToolStripMenuItem.Size = new System.Drawing.Size(332, 26);
+            this.reporteDeProductosMásVendidosToolStripMenuItem.Text = "Reporte de productos más vendidos";
+            this.reporteDeProductosMásVendidosToolStripMenuItem.Click += new System.EventHandler(this.reporteDeProductosMásVendidosToolStripMenuItem_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -194,6 +222,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeVentasPorPeriodoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeVentasPorFacturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteDeProductosMásVendidosToolStripMenuItem;
     }
 }
 

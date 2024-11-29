@@ -47,6 +47,22 @@ namespace FinalPL2
             V.ShowDialog();
         }
 
-        
+        private void reporteDeVentasPorPeriodoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteVentasPorPeriodo V = new frmReporteVentasPorPeriodo();
+            V.ShowDialog();
+        }
+
+        private void reporteDeVentasPorFacturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteVentasPorFactura V = new frmReporteVentasPorFactura();
+            V.ShowDialog();
+        }
+
+        private void reporteDeProductosMásVendidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteProdMasVendidos V = new frmReporteProdMasVendidos();
+            V.ShowDialog();
+        }
     }
 }

@@ -95,6 +95,24 @@
     <Compile Include="frmReportePorRol.Designer.cs">
       <DependentUpon>frmReportePorRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteProdMasVendidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteProdMasVendidos.Designer.cs">
+      <DependentUpon>frmReporteProdMasVendidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteVentasPorFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteVentasPorFactura.Designer.cs">
+      <DependentUpon>frmReporteVentasPorFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReporteVentasPorPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteVentasPorPeriodo.Designer.cs">
+      <DependentUpon>frmReporteVentasPorPeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmHome.resx">
@@ -111,6 +129,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmReportePorRol.resx">
       <DependentUpon>frmReportePorRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteProdMasVendidos.resx">
+      <DependentUpon>frmReporteProdMasVendidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteVentasPorFactura.resx">
+      <DependentUpon>frmReporteVentasPorFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteVentasPorPeriodo.resx">
+      <DependentUpon>frmReporteVentasPorPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

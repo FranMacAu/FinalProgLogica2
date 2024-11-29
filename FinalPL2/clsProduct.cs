@@ -232,5 +232,71 @@ namespace FinalPL2
 
             return Productos;
         }
+
+        public string ObtenerProductNumber(int productid)
+        {
+            StreamReader AD = new StreamReader(FileName);
+            string productnumber = "";
+
+            string datoleido = AD.ReadLine();
+            datoleido = AD.ReadLine();
+
+            while(datoleido != null)
+            {
+                string[] registro = datoleido.Split(';');
+                if (Convert.ToInt32(registro[0]) == productid) 
+                {
+                    productnumber = registro[2];
+                }
+                datoleido = AD.ReadLine();
+            }
+
+            return productnumber;
+        }
+
+        public string ObtenerProductID(string productnumber)
+        {
+            StreamReader AD = new StreamReader(FileName);
+            string productid = "";
+
+            string datoleido = AD.ReadLine();
+            datoleido = AD.ReadLine();
+
+            while (datoleido != null)
+            {
+                string[] registro = datoleido.Split(';');
+                if (registro[2] == productnumber)
+                {
+                    productid = registro[0];
+                }
+                datoleido = AD.ReadLine();
+            }
+
+            return productid;
+
+        }
+
+        public string ObtenerProductName(int productid)
+        {
+            StreamReader AD = new StreamReader(FileName);
+            string productname = "";
+
+            string datoleido = AD.ReadLine();
+            datoleido = AD.ReadLine();
+
+            while (datoleido != null)
+            {
+                string[] registro = datoleido.Split(';');
+                if (Convert.ToInt32(registro[0]) == productid)
+                {
+                    productname = registro[1];
+                }
+                datoleido = AD.ReadLine();
+            }
+
+            return productname;
+        }
+
+
     }
 }
