@@ -57,7 +57,7 @@ namespace FinalPL2
             datoleido = AD.ReadLine();
 
             RD.WriteLine("Reporte de ventas por periodo");
-            RD.WriteLine("Ventas entre " + mindate.ToString("d") + " y " + maxdate.ToString("d"));      //.toString("d") fecha corta
+            RD.WriteLine("Ventas entre " + mindate.ToString("d") + " y " + maxdate.ToString("d"));      //.toString("d") para fecha corta
             RD.WriteLine("");
             RD.WriteLine("SalesOrderNumber;AccountNumber;CustomerId;OrderDate ");
             while (datoleido != null)
@@ -98,24 +98,25 @@ namespace FinalPL2
             MessageBox.Show("Reporte generado");
         }
 
-        public int ObtenerCustomerID(int salesorderid)
+        public List<int> ObtenerCustomerIDs(List<int> salesorderids)
         {
             int resultado = 0;
+            List<int> CustomerIDs = new List<int>();
             try
             {
+
                 StreamReader AD = new StreamReader(NombreArchivo);
                 string datoleido = AD.ReadLine();
                 datoleido = AD.ReadLine();
 
-                while (datoleido != null)
+                foreach (int idventa in salesorderids)
                 {
                     string[] registro = datoleido.Split(';');
-                    if (Convert.ToInt32(registro[0]) == salesorderid)
+                    if (salesorderids.Contains(Convert.ToInt32(registro[0]))) ;
                     {
                         resultado = Convert.ToInt32(registro[10]);
+                        CustomerIDs.Add(resultado);
                     }
-
-                    datoleido = AD.ReadLine();
                 }
 
 
@@ -129,14 +130,11 @@ namespace FinalPL2
                 MessageBox.Show(e.ToString());
             }
 
-            return resultado;
-
-
+            return CustomerIDs; 
         }
 
         public string ObtenerUltimaVenta(int customerid)
         {
-
             DateTime LastOrder = DateTime.Parse("01/01/1900");
             try
             {
@@ -153,7 +151,7 @@ namespace FinalPL2
                         {
                             LastOrder = Convert.ToDateTime(registro[3]);
                         }
-                        
+
                     }
 
                     datoleido = AD.ReadLine();
@@ -170,13 +168,47 @@ namespace FinalPL2
                 MessageBox.Show(e.ToString());
             }
 
-            return LastOrder.ToString();
+            return LastOrder.ToString("d");
 
         }
+        public List<string> ObtenerUltimaVenta(List<int> customerids)
+        {
+            List<string> ListaUltimaCompra = new List<string>();
+            DateTime LastOrder = DateTime.Parse("01/01/1900");
+            try
+            {
+                StreamReader AD = new StreamReader(NombreArchivo);
+                string datoleido = AD.ReadLine();
+                datoleido = AD.ReadLine();
 
-        public int ObtenerQComprasPorCliente(int customerid)
+                foreach(int i in customerids)
+                {
+                    string Fecha = ObtenerUltimaVenta(i);
+                    ListaUltimaCompra.Add(Fecha);
+                }
+
+
+                AD.Close();
+                AD.Dispose();
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+
+            return ListaUltimaCompra;
+        }
+
+        public int ObtenerQComprasPorCliente(int customerid)    // podría recibir lista de clientes y retornar lista de cantidades con el mismo índice
         {
             StreamReader AD = new StreamReader(NombreArchivo);
+            List<int> CustomerIDs = new List<int>();
+            List<int> CustomerIDsUsados = new List<int>();
+            List<int> CantidadesPorID = new List<int>();
+                        
+
             string datoleido = AD.ReadLine();
             datoleido = AD.ReadLine();
             int QOrderSales = 0;

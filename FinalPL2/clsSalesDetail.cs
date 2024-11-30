@@ -106,11 +106,16 @@ namespace FinalPL2
             {
                 StreamReader AD = new StreamReader(FileName);
                 StreamWriter RD = new StreamWriter("Reporte_Clientes_Por_Producto.csv", false, Encoding.UTF8);
+
+                List<int> ventas = new List<int>();     // lista de ventas del prodid
                 clsSalesHeader objSalesHeader = new clsSalesHeader();
                 clsProduct objProduct = new clsProduct();
                 string[] VecAImprimir = new string[3];
                 string ProdID = "";
-                //List<int> CustomerYaChequeado = new List<int>();
+                List<int> CustomerYaChequeado = new List<int>();
+                List<int> CustomerIDs = new List<int>();    //lista de compradores 
+                int CantidadVendidosTotal = 0;
+                
 
                 
 
@@ -120,43 +125,87 @@ namespace FinalPL2
                 ProdID = objProduct.ObtenerProductID(productnumber);
                 if (ProdID != null)
                 {
-                    MessageBox.Show("Se encontró el producto");
-                    RD.WriteLine("Compradores por producto");
-                    RD.WriteLine("ProductNumber: ;" + productnumber);
-                    RD.WriteLine("ProductName: ;");
-                    RD.WriteLine("Total sales: ;");
-                    RD.WriteLine("Total buyers: ;");
 
-                    ProdID = "776";
+
                     while (datoleido != null)
                     {
                         string[] registro = datoleido.Split(';');
-
-                        if (registro[4] == ProdID)       
+                        if (Convert.ToString(registro[4]) == ProdID)
                         {
-                            //MessageBox.Show("Se encontró una venta del producto");
-
-                            VecAImprimir[0] = objSalesHeader.ObtenerCustomerID(Convert.ToInt32(registro[0])).ToString();
-
-                            MessageBox.Show("Se encontró el CustomerID");
-                            VecAImprimir[1] = CantidadDeComprasPorCustomerID(Convert.ToInt32(VecAImprimir[0])).ToString(); // cantidad de ventas a ese customer id de ese id producto
-                            MessageBox.Show("Se encontró Qcompras");
-                            VecAImprimir[2] = objSalesHeader.ObtenerUltimaVenta(Convert.ToInt32(VecAImprimir[0]));
-                            //MessageBox.Show("Se encontró última venta");
-
-                            RD.Write(VecAImprimir[0]);
-                            RD.Write(";");
-                            RD.Write(VecAImprimir[1]);
-                            RD.Write(";");
-                            RD.WriteLine(VecAImprimir[2]);
+                            ventas.Add(Convert.ToInt32(registro[0]));  // 
 
                         }
-
                         datoleido = AD.ReadLine();
+                    }       // hasta acá tenemos una lista de los salesorderid
+
+                    CustomerIDs = objSalesHeader.ObtenerCustomerIDs(ventas);    // lista de customerids en lugar de salesorderids
+                    CantidadVendidosTotal = ventas.Count;
+                    List<int> ListaClientes = SacarRepetidos(CustomerIDs);    //acá le dejamos una lista de valores únicos
+
+                    List<int> ListaVentasPorCliente = new List<int>();
+
+
+                    foreach (int i in ListaClientes)
+                    {
+                        int c = 0;
+                        int CantDeVentas = 0;
+                        while (c < CustomerIDs.Count())
+                        {
+                            if (i == CustomerIDs[c])
+                            {
+                                CantDeVentas++;
+                            }
+                            c++;
+                        }
+                        ListaVentasPorCliente.Add(CantDeVentas);
+                    }       // acá ya tenemos generada una lista paralela a ListaClientes con la cantidad de ventas respectivas
+
+                    //ordenar ambas listas
+                    for (int i = 0; i < ListaClientes.Count - 1; i++)
+                    {
+                        for (int j = 0; j < ListaClientes.Count - 1 - i; j++)
+                        {
+                            if (ListaVentasPorCliente[j] < ListaVentasPorCliente[j + 1])
+                            {
+                                int auxVentas = ListaVentasPorCliente[j];
+                                ListaVentasPorCliente[j] = ListaVentasPorCliente[j + 1];
+                                ListaVentasPorCliente[j + 1] = auxVentas;
+
+                                int auxCliente = ListaClientes[j];
+                                ListaClientes[j] = ListaClientes[j + 1];
+                                ListaClientes[j + 1] = auxCliente;
+                            }
+                        }
+                    }
+
+                    List<string> ListaFechasUltimaCompra = objSalesHeader.ObtenerUltimaVenta(ListaClientes);
+
+
+                    // acá ya tenemos lista de compradores del producto, otra lista con las compras totales del prod por cliente y otra lista con las fechas de la última compra de c/u. Todas con el mismo índice
+
+                    // imprimimos el reporte
+                    RD.WriteLine("Compradores por producto");
+                    RD.WriteLine("ProductNumber: ;" + productnumber);
+                    RD.WriteLine("ProductName: ;" + objProduct.ObtenerProductName(Convert.ToInt32(ProdID)));
+                    RD.WriteLine("Total sales: ;" + ventas.Count);
+                    RD.WriteLine("Total buyers: ;" + ListaClientes.Count);
+                    RD.WriteLine("");
+                    RD.WriteLine("CustomerID;QOrderSales;LastOrder");
+
+
+                    int INDListas = 0;
+                    while (INDListas < ListaClientes.Count)
+                    {
+                        RD.Write(ListaClientes[INDListas].ToString());
+                        RD.Write(";");
+                        RD.Write(ListaVentasPorCliente[INDListas].ToString());
+                        RD.Write(";");
+                        RD.WriteLine(ListaFechasUltimaCompra[INDListas]);
+
+                        INDListas++;
                     }
                     MessageBox.Show("Reporte generado");
-                }
-                else { MessageBox.Show("No se encontró el producto buscado"); }
+                } else { MessageBox.Show("No se encontró el producto buscado"); }
 
 
 
@@ -164,9 +213,6 @@ namespace FinalPL2
                 AD.Dispose();
                 RD.Close();
                 RD.Dispose();
-
-                
-
             }
             catch (Exception e)
             {
@@ -176,30 +222,21 @@ namespace FinalPL2
             
         }
 
-        public int CantidadDeComprasPorCustomerID(int customerid)
+        public List<int> SacarRepetidos(List<int> lista)    
         {
-            int cantidad = 0;
-            clsSalesHeader objSalesHeader = new clsSalesHeader();
-            StreamReader AD = new StreamReader(FileName);
-            string datoleido = AD.ReadLine();
-            datoleido = AD.ReadLine();
+            List<int> ListaLimpia = new List<int>();
 
-            while (datoleido != null)
+            foreach (int i in lista)
             {
-                string[] registro = datoleido.Split(';');
-
-                if (objSalesHeader.ObtenerCustomerID(Convert.ToInt32(registro[0])) == customerid)
+                if (!ListaLimpia.Contains(i))
                 {
-                    cantidad++;
+                    ListaLimpia.Add(i);
                 }
-
-                datoleido = AD.ReadLine();
             }
 
-            AD.Close();
-            AD.Dispose();
-            return cantidad;
+            return ListaLimpia;
         }
+        
 
 
 

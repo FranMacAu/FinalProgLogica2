@@ -144,12 +144,10 @@ namespace FinalPL2
 
             while (datoleido != null)
             {
-                //MessageBox.Show(datoleido);
                 string[] registro = datoleido.Split(';');
                 DateTime BirthDate = DateTime.Parse(registro[6]);
                 
 
-                //MessageBox.Show(BirthDate.Month.ToString());
                 if (BirthDate.Month == Mes)
                 {   
                     // guarda los datos de los empleados que cumplen la consición
